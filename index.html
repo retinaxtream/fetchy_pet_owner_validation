@@ -282,58 +282,80 @@
             opacity: 0.8;
         }
 
-        .services-grid {
+        .services-layout {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            margin: 4rem auto 0;
             gap: 2rem;
         }
 
-        .service-card {
-            background: var(--light);
-            padding: 2rem;
-            border-radius: 20px;
-            text-align: center;
-            transition: all 0.3s;
-            border: 2px solid transparent;
-            cursor: pointer;
+        .services-column {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            flex: 1;
         }
 
-        .service-card:hover {
-            background: white;
-            border-color: var(--primary);
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        .services-column.left {
+            align-items: flex-end;
+        }
+
+        .services-column.right {
+            align-items: flex-start;
+        }
+
+        .central-image-column {
+            flex: 1.5;
+            text-align: center;
+        }
+
+        .central-image-column img {
+            max-width: 100%;
+            border-radius: 30px;
+        }
+
+        .service-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            max-width: 350px;
+        }
+
+        .services-column.left .service-item {
+            text-align: right;
+        }
+
+        .services-column.right .service-item {
+            text-align: left;
+        }
+
+        .service-text h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .service-text p {
+            font-size: 0.9rem;
+            color: var(--text);
+            opacity: 0.8;
         }
 
         .service-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 1.5rem;
-            background: white;
-            border-radius: 20px;
+            background: var(--primary);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 40px;
-            transition: all 0.3s;
+            flex-shrink: 0;
         }
 
-        .service-card:hover .service-icon {
-            background: var(--primary);
-            transform: scale(1.1);
-        }
-
-        .service-card h3 {
-            font-size: 1.5rem;
-            color: var(--dark);
-            margin-bottom: 1rem;
-        }
-
-        .service-card p {
-            color: var(--text);
-            line-height: 1.6;
+        .service-icon img {
+            width: 170px;
+            height: 170px;
         }
 
         /* Why Choose Us */
@@ -591,18 +613,9 @@
         .footer-links a:hover {
             opacity: 1;
         }
-        .service-image{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 0;
-            height: 550px;
-        }
-        .service-image img{
-            width: 500px;
-            height: 500px;
-            border-radius: 30px;
-            animation: fadeInRight 1s ease;
+        .service-icon img {
+            width: 170px;
+            height: 170px;
         }
 
         /* Animations */
@@ -667,6 +680,30 @@
         }
 
         /* Responsive */
+        @media (max-width: 992px) {
+            .services-layout {
+                flex-direction: column;
+            }
+            .central-image-column {
+                order: -1;
+                margin-bottom: 3rem;
+            }
+            .services-column {
+                gap: 2rem;
+            }
+            .services-column.left, .services-column.right {
+                align-items: center;
+            }
+            .service-item {
+                flex-direction: column;
+                text-align: center !important;
+                gap: 1rem;
+            }
+            .services-column.left .service-item {
+                flex-direction: column-reverse;
+            }
+        }
+
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -687,6 +724,15 @@
 
             .email-forms {
                 grid-template-columns: 1fr;
+            }
+
+            .service-item {
+                flex-direction: column;
+            }
+
+            .service-icon img {
+                width: 170px;
+                height: 170px;
             }
         }
     </style>
@@ -761,11 +807,71 @@
     <!-- Services Section -->
     <section class="services" id="services">
         <div class="section-header">
-            <h2>We are best in</h2>
-            <p>All-in-One Super App – Grooming, vet care, walking, sitting, training, and shopping all in one place.</p>
+            <h2>Our Services</h2>
+            <p>Explore our wide range of services designed to keep your pet happy and healthy.</p>
         </div>
-        <div class="service-image">
-            <img src="./img/service-img.jpeg" alt="Happy dog with owner">
+        <div class="services-layout">
+            <div class="services-column left">
+                <div class="service-item">
+                    <div class="service-text">
+                        <h3>All-in-One Super App</h3>
+                        <p>Everything your pet needs: grooming, vet care, walking, sitting, training, and shopping in one place.</p>
+                    </div>
+                    <div class="service-icon">
+                        <img src="./img/All-in-One Super App.png" alt="Service Icon">
+                    </div>
+                </div>
+                <div class="service-item">
+                    <div class="service-text">
+                        <h3>Digital Health Passport</h3>
+                        <p>Store vaccines, prescriptions, lab results, and share instantly with vets.</p>
+                    </div>
+                    <div class="service-icon">
+                        <img src="./img/Digital Health Passport.png" alt="Service Icon">
+                    </div>
+                </div>
+                <div class="service-item">
+                    <div class="service-text">
+                        <h3>Vet Care Anytime</h3>
+                        <p>Online consultations, offline bookings, and quick prescription refills.</p>
+                    </div>
+                    <div class="service-icon">
+                        <img src="./img/vetcare.png" alt="Service Icon">
+                    </div>
+                </div>
+            </div>
+            <div class="central-image-column">
+                <img src="./img/service-img.jpeg" alt="Happy dog with owner">
+            </div>
+            <div class="services-column right">
+                <div class="service-item">
+                    <div class="service-icon">
+                        <img src="./img/Grooming Made Easy.png" alt="Service Icon">
+                    </div>
+                    <div class="service-text">
+                        <h3>Grooming Made Easy</h3>
+                        <p>Compare stations, check prices, and book grooming in seconds.</p>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">
+                        <img src="./img/Boarding & Daycare.png" alt="Service Icon">
+                    </div>
+                    <div class="service-text">
+                        <h3>Boarding & Daycare</h3>
+                        <p>Find safe, trusted spaces for your pet when you’re away.</p>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">
+                        <img src="./img/Walking & Sitting.png" alt="Service Icon">
+                    </div>
+                    <div class="service-text">
+                        <h3>Walking & Sitting</h3>
+                        <p>Book trusted walkers and sitters nearby, on-demand.</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
