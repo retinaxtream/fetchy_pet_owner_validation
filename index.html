@@ -1,741 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Braah+One&family=RocknRoll+One&family=Capriola&family=Reddit+Sans:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='128' height='128'%3E%3Crect width='128' height='128' fill='%23FFD93D'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-size='80'%3E%F0%9F%90%BE%F0%9F%90%BE%3C/text%3E%3C/svg%3E">
     <title>Fetchy - Your Pet, Our Priority</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #FFD93D;
-            --primary-dark: #FFBF00;
-            --secondary: #6BCF7D;
-            --accent: #FF6B6B;
-            --dark: #2B2D42;
-            --light: #F7F9FB;
-            --text: #4A4A4A;
-            --border: #E8ECEF;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: var(--light);
-            color: var(--text);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Navigation */
-        nav {
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            animation: slideDown 0.5s ease;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 2rem;
-        }
-
-        .logo-nav {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 28px;
-            font-weight: 800;
-            color: var(--dark);
-        }
-
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--primary);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: var(--text);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-dark);
-        }
-
-        .cta-button {
-            background: var(--primary);
-            color: var(--dark);
-            padding: 10px 24px;
-            border-radius: 25px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-
-        .cta-button:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-        }
-
-        /* Hero Section */
-        .hero {
-            margin-top: 30px;
-            padding: 80px 2rem 60px;
-            background: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .hero-content {
-            animation: fadeInLeft 1s ease;
-        }
-
-        .hero h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 800;
-            color: var(--dark);
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero h1 span {
-            color: var(--primary-dark);
-            position: relative;
-        }
-
-        .hero-subtitle {
-            font-size: 1.25rem;
-            color: var(--text);
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            color: var(--dark);
-            padding: 14px 32px;
-            border-radius: 30px;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-block;
-            transition: all 0.3s;
-            border: 2px solid var(--primary);
-        }
-
-        .btn-primary:hover {
-            background: var(--primary-dark);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(255, 217, 61, 0.3);
-        }
-
-        .btn-secondary {
-            background: white;
-            color: var(--dark);
-            padding: 14px 32px;
-            border-radius: 30px;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-block;
-            transition: all 0.3s;
-            border: 2px solid var(--dark);
-        }
-
-        .btn-secondary:hover {
-            background: var(--dark);
-            color: white;
-            transform: translateY(-3px);
-        }
-
-        .hero-image {
-            position: relative;
-            animation: fadeInRight 1s ease;
-        }
-
-        .hero-image img {
-            width: 100%;
-            height: auto;
-            border-radius: 30px;
-        }
-
-        .floating-badge {
-            position: absolute;
-            background: white;
-            padding: 12px 20px;
-            border-radius: 50px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        .badge-1 {
-            top: 20px;
-            right: -20px;
-            background: var(--secondary);
-            color: white;
-        }
-
-        .badge-2 {
-            bottom: 30px;
-            left: -20px;
-            background: var(--accent);
-            color: white;
-        }
-
-        /* Stats Bar */
-        .stats-bar {
-            background: var(--primary);
-            padding: 30px 2rem;
-            margin-top: -2px;
-        }
-
-        .stats-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            text-align: center;
-        }
-
-        .stat-item {
-            animation: fadeInUp 1s ease;
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--dark);
-        }
-
-        .stat-label {
-            font-size: 1rem;
-            color: var(--dark);
-            opacity: 0.8;
-        }
-
-        /* Services Section */
-        .services {
-            padding: 80px 2rem;
-            background: white;
-        }
-
-        .section-header {
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto 0px;
-        }
-
-        .section-header h2 {
-            font-size: 3rem;
-            font-weight: 800;
-            color: var(--dark);
-            margin-bottom: 1rem;
-        }
-
-        .section-header p {
-            font-size: 1.125rem;
-            color: var(--text);
-            opacity: 0.8;
-        }
-
-        .services-layout {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            max-width: 1200px;
-            margin: 4rem auto 0;
-            gap: 2rem;
-        }
-
-        .services-column {
-            display: flex;
-            flex-direction: column;
-            gap: 3rem;
-            flex: 1;
-        }
-
-        .services-column.left {
-            align-items: flex-end;
-        }
-
-        .services-column.right {
-            align-items: flex-start;
-        }
-
-        .central-image-column {
-            flex: 1.5;
-            text-align: center;
-        }
-
-        .central-image-column img {
-            max-width: 100%;
-            border-radius: 30px;
-        }
-
-        .service-item {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            max-width: 350px;
-        }
-
-        .services-column.left .service-item {
-            text-align: right;
-        }
-
-        .services-column.right .service-item {
-            text-align: left;
-        }
-
-        .service-text h3 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--dark);
-            margin-bottom: 0.5rem;
-        }
-
-        .service-text p {
-            font-size: 0.9rem;
-            color: var(--text);
-            opacity: 0.8;
-        }
-
-        .service-icon {
-            background: var(--primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .service-icon img {
-            width: 170px;
-            height: 170px;
-        }
-
-        /* Why Choose Us */
-        .why-us {
-            padding: 80px 2rem;
-            background: linear-gradient(135deg, #FFD93D20 0%, #6BCF7D20 100%);
-        }
-
-        .why-us-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-        }
-
-        .why-item {
-            text-align: center;
-            animation: fadeInUp 1s ease;
-        }
-
-        .why-icon {
-            width: 60px;
-            height: 60px;
-            margin: 0 auto 1rem;
-            background: white;
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 30px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-
-        .why-item h4 {
-            font-size: 1.25rem;
-            color: var(--dark);
-            margin-bottom: 0.5rem;
-        }
-
-        .why-item p {
-            color: var(--text);
-            font-size: 0.95rem;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            padding: 80px 2rem;
-            background: white;
-        }
-
-        .cta-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            border-radius: 30px;
-            padding: 60px 40px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-container::before {
-            content: '🐕';
-            position: absolute;
-            font-size: 200px;
-            opacity: 0.1;
-            top: -50px;
-            right: -50px;
-            transform: rotate(-15deg);
-        }
-
-        .cta-container h2 {
-            font-size: 2.5rem;
-            color: var(--dark);
-            margin-bottom: 1rem;
-        }
-
-        .cta-container p {
-            font-size: 1.25rem;
-            color: var(--dark);
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-
-        .email-forms {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .form-card {
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .form-card h3 {
-            color: var(--dark);
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-
-        .form-card p {
-            color: var(--text);
-            margin-bottom: 1.5rem;
-            font-size: 0.95rem;
-        }
-
-        .email-input {
-            width: 100%;
-            padding: 12px 20px;
-            border: 2px solid var(--border);
-            border-radius: 25px;
-            font-size: 16px;
-            margin-bottom: 1rem;
-            transition: all 0.3s;
-        }
-
-        .email-input:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(255, 217, 61, 0.1);
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 12px 24px;
-            background: var(--dark);
-            color: white;
-            border: none;
-            border-radius: 25px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .submit-btn:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-        }
-
-        .success-msg {
-            display: none;
-            padding: 10px;
-            background: var(--secondary);
-            color: white;
-            border-radius: 10px;
-            margin-top: 10px;
-            text-align: center;
-        }
-
-        .success-msg.show {
-            display: block;
-            animation: slideIn 0.5s ease;
-        }
-
-        /* Party Popper Styles */
-        .party-popper-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 9999;
-            display: none;
-        }
-
-        .party-popper-overlay.active {
-            display: block;
-        }
-
-        .confetti {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background: #f0f;
-            animation: confetti-fall 3s linear forwards;
-        }
-
-        @keyframes confetti-fall {
-            0% {
-                transform: translateY(-100vh) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(100vh) rotate(720deg);
-                opacity: 0;
-            }
-        }
-
-        .celebration-emoji {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 300px;
-            z-index: 10000;
-            animation: celebration-pop 1.5s ease-out forwards;
-            display: none;
-        }
-
-        @keyframes celebration-pop {
-            0% {
-                transform: translate(-50%, -50%) scale(0) rotate(0deg);
-                opacity: 0;
-            }
-            30% {
-                transform: translate(-50%, -50%) scale(1.5) rotate(180deg);
-                opacity: 1;
-            }
-            60% {
-                transform: translate(-50%, -50%) scale(1.2) rotate(360deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translate(-50%, -50%) scale(3) rotate(720deg);
-                opacity: 0;
-            }
-        }
-
-        /* Footer */
-        footer {
-            background: var(--dark);
-            color: white;
-            padding: 40px 2rem;
-            text-align: center;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .footer-links a {
-            color: white;
-            text-decoration: none;
-            opacity: 0.8;
-            transition: opacity 0.3s;
-        }
-
-        .footer-links a:hover {
-            opacity: 1;
-        }
-        .service-icon img {
-            width: 170px;
-            height: 170px;
-        }
-
-        /* Animations */
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-
-        @keyframes fadeInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes fadeInRight {
-            from {
-                opacity: 0;
-                transform: translateX(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-100%);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateX(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        /* Responsive */
-        @media (max-width: 992px) {
-            .services-layout {
-                flex-direction: column;
-            }
-            .central-image-column {
-                order: -1;
-                margin-bottom: 3rem;
-            }
-            .services-column {
-                gap: 2rem;
-            }
-            .services-column.left, .services-column.right {
-                align-items: center;
-            }
-            .service-item {
-                flex-direction: column;
-                text-align: center !important;
-                gap: 1rem;
-            }
-            .services-column.left .service-item {
-                flex-direction: column-reverse;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hero-container {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .floating-badge {
-                display: none;
-            }
-
-            .email-forms {
-                grid-template-columns: 1fr;
-            }
-
-            .service-item {
-                flex-direction: column;
-            }
-
-            .service-icon img {
-                width: 170px;
-                height: 170px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Navigation -->
@@ -746,9 +20,10 @@
                 <span>Fetchy</span>
             </div>
             <ul class="nav-links">
+                <li><a href="#aboutus">About Us</a></li>
                 <li><a href="#services">Services</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="#join" class="cta-button">Join Now</a></li>
+                <!-- <li><a href="#contact">Contact</a></li> -->
+                <li><a href="#join" class="cta-button">Join Us</a></li>
             </ul>
         </div>
     </nav>
@@ -757,27 +32,27 @@
     <section class="hero">
         <div class="hero-container">
             <div class="hero-content">
-                <h1>Your pet,<br><span>our priority</span></h1>
-                <p class="hero-subtitle">Connecting pet parents with trusted professionals for grooming, walking, boarding, training, and veterinary care.</p>
+                <h1>Because every wag, purr, and cuddle<span> matters.</span></h1>
+                <p class="hero-subtitle">Vet visits, vaccinations, spa days, and health records managed with love, all in one place.</p>
                 <div class="hero-buttons">
-                    <a href="#join" class="btn-primary">Get Started</a>
-                    <a href="#learn" class="btn-secondary">Learn More</a>
+                    <a href="#join" class="btn-primary">Join Us</a>
+                    <!-- <a href="#learn" class="btn-secondary">Learn More</a> -->
                 </div>
             </div>
             <div class="hero-image">
                 <!-- Replace the src below with your image -->
                 <!-- Option 1: Use a URL if you host the image somewhere -->
-                <img src="./img/lady_play_with_dog.png" alt="Happy dog with owner">
+                <img src="./img/happy_pets_and_parents.png" alt="Happy dog with owner">
                 
                 <!-- Option 2: Use a base64 encoded image -->
                 <!-- <img src="data:image/jpeg;base64,YOUR_BASE64_STRING_HERE" alt="Happy dog with owner"> -->
                 
-                <div class="floating-badge badge-1">
-                    <span>✓</span> Trusted by 1K+ pet owners
+                <!-- <div class="floating-badge badge-1">
+                    <span>💛</span> 💛
                 </div>
                 <div class="floating-badge badge-2">
-                    <span>⭐</span> 4.9/5 Rating
-                </div>
+                    <span>💛</span>
+                </div> -->
             </div>
         </div>
     </section>
@@ -804,39 +79,56 @@
         </div>
     </section>
 
+    <!-- About Us Section -->
+    <section class="aboutus" id="aboutus">
+        <div class="section-header">
+            <h2>Because They’re Family</h2>
+            <p>At Fetchy, we know your pet isn’t just an animal they’re a part of your heart. Every wag, purr, playful zoom around the house, or quiet cuddle on the couch is a moment that matters.<br><br>
+
+That’s why we built Fetchy. To give you a place where caring for your furry family member is simple, safe, and joyful. <br>Track vet visits, vaccines, spa days, or keep all their health info in one place so you never miss a beat, and can spend more time making memories.
+
+<br><br> Fetchy is more than an app. It’s a community of people who love pets just as much as you do. Vets, Service providers, caregivers, and fellow pet parents all sharing one belief : our pets deserve the very best, always.
+
+Because at the end of the day, they give us all their love and they deserve ours in return.</p>
+        </div>
+        <!-- <div class="service-image">
+            <img src="./img/service-img.jpeg" alt="Happy dog with owner">
+        </div> -->
+    </section>
+
     <!-- Services Section -->
     <section class="services" id="services">
         <div class="section-header">
-            <h2>Our Services</h2>
-            <p>Explore our wide range of services designed to keep your pet happy and healthy.</p>
+            <h2>Everything they need, all in one place.</h2>
+            <p>An All in one super app! From vet visits and vaccinations to spa pampering and health tracking, Fetchy makes caring for your furry family simple, joyful, and full of love.</p>
         </div>
         <div class="services-layout">
             <div class="services-column left">
                 <div class="service-item">
                     <div class="service-text">
-                        <h3>All-in-One Super App</h3>
-                        <p>Everything your pet needs: grooming, vet care, walking, sitting, training, and shopping in one place.</p>
+                        <h3>Spa for Paws</h3>
+                        <p>Your pet’s happy place. massages, bubbles, and a whole lot of love.</p>
                     </div>
                     <div class="service-icon">
-                        <img src="./img/All-in-One Super App.png" alt="Service Icon">
+                        <img src="./img/pet_spa_icon.png" alt="Service Icon">
                     </div>
                 </div>
                 <div class="service-item">
                     <div class="service-text">
-                        <h3>Digital Health Passport</h3>
-                        <p>Store vaccines, prescriptions, lab results, and share instantly with vets.</p>
+                        <h3>Health in Their Paw-cket</h3>
+                        <p>All their medical records in one loving space, because peace of mind should be this simple.</p>
                     </div>
                     <div class="service-icon">
-                        <img src="./img/Digital Health Passport.png" alt="Service Icon">
+                        <img src="./img/pet_health_passport.png" alt="Service Icon">
                     </div>
                 </div>
                 <div class="service-item">
                     <div class="service-text">
-                        <h3>Vet Care Anytime</h3>
-                        <p>Online consultations, offline bookings, and quick prescription refills.</p>
+                        <h3>Vets Who Truly Care</h3>
+                        <p>Because furry emergencies don’t keep office hours. care, check-ups, and prescriptions, always within reach</p>
                     </div>
                     <div class="service-icon">
-                        <img src="./img/vetcare.png" alt="Service Icon">
+                        <img src="./img/vet_care_icon.png" alt="Service Icon">
                     </div>
                 </div>
             </div>
@@ -846,29 +138,29 @@
             <div class="services-column right">
                 <div class="service-item">
                     <div class="service-icon">
-                        <img src="./img/Grooming Made Easy.png" alt="Service Icon">
+                        <img src="./img/pet_grooming_icon.png" alt="Service Icon">
                     </div>
                     <div class="service-text">
-                        <h3>Grooming Made Easy</h3>
-                        <p>Compare stations, check prices, and book grooming in seconds.</p>
+                        <h3>From Ruff to Fluff</h3>
+                        <p>Find the best groomers in town because messy fur is cute, but shiny fur gets extra cuddles.</p>
                     </div>
                 </div>
                 <div class="service-item">
                     <div class="service-icon">
-                        <img src="./img/Boarding & Daycare.png" alt="Service Icon">
+                        <img src="./img/pet_boarding_icon.png" alt="Service Icon">
                     </div>
                     <div class="service-text">
-                        <h3>Boarding & Daycare</h3>
-                        <p>Find safe, trusted spaces for your pet when you’re away.</p>
+                        <h3>Home Away From Home</h3>
+                        <p>Because they deserve cuddles, even when you can’t be there</p>
                     </div>
                 </div>
                 <div class="service-item">
                     <div class="service-icon">
-                        <img src="./img/Walking & Sitting.png" alt="Service Icon">
+                        <img src="./img/pet_walk_icon.png" alt="Service Icon">
                     </div>
                     <div class="service-text">
-                        <h3>Walking & Sitting</h3>
-                        <p>Book trusted walkers and sitters nearby, on-demand.</p>
+                        <h3>Happy Walks, Loving Sits</h3>
+                        <p>Book trusted walkers and sitters nearby. because paws deserve company, not loneliness.</p>
                     </div>
                 </div>
             </div>
@@ -878,16 +170,16 @@
     <!-- CTA Section -->
     <section class="cta-section" id="join">
         <div class="cta-container">
-            <h2>Let's meet!</h2>
-            <p>Be the first to know when we launch sign up with your email today for exclusive updates, early access perks, and tips to keep your pet purring with joy!</p>
+            <h2>Happiness starts here</h2>
+            <p>Be the first to know when we launch and the first to enjoy everything Fetchy offers. no spam, just love.</p>
             
             <div class="email-forms">
                 <div class="form-card">
-                    <h3> 🐕For Pet Parents</h3>
+                    <!-- <h3>For Pet Parents</h3> -->
                     <p>Get exclusive early access to trusted pet services</p>
                     <form id="ownerForm">
                         <input type="email" class="email-input" id="ownerEmail" placeholder="Enter your email" required>
-                        <button type="submit" class="submit-btn">Join as Pet Parent</button>
+                        <button type="submit" class="submit-btn">I'm in</button>
                         <div class="success-msg" id="ownerSuccess">🎉 Welcome! We'll notify you soon.</div>
                     </form>
                 </div>
@@ -903,7 +195,7 @@
     <footer>
         <div class="footer-content">
             <div class="footer-links">
-                <a href="#about">About Us</a>
+                <a href="#aboutus">About Us</a>
                 <a href="#services">Services</a>
                 <a href="#contact">Contact</a>
                 <a href="#privacy">Privacy Policy</a>
@@ -914,211 +206,6 @@
         </div>
     </footer>
 
-    <script>
-        // IMPORTANT: Replace this with your actual Google Form URL and entry ID
-       const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLScsKR76K-OE6N6PTQjHfp3-smbOhrAiKkHWOesgoSyTJErR6Q/formResponse';
-        const EMAIL_ENTRY_ID = 'entry.1884265043'; 
-        
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
-
-        // Party Popper Animation Function
-        function triggerPartyPopper() {
-            const overlay = document.getElementById('partyPopper');
-            const celebrationEmoji = document.getElementById('celebrationEmoji');
-            
-            // Create multiple audio instances for louder sound
-            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-            
-            // Play multiple sound instances for increased volume
-            for(let i = 0; i < 3; i++) {
-                setTimeout(() => {
-                    const audio = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBTGH0fPTgjMGHm7A7+OZURE');
-                    audio.volume = 1.0; // Max volume
-                    audio.play().catch(e => console.log('Audio play failed:', e));
-                }, i * 100);
-            }
-            
-            // Also try Web Audio API for better sound
-            try {
-                const oscillator = audioContext.createOscillator();
-                const gainNode = audioContext.createGain();
-                
-                oscillator.connect(gainNode);
-                gainNode.connect(audioContext.destination);
-                
-                oscillator.frequency.value = 800;
-                oscillator.type = 'sine';
-                
-                gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
-                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
-                
-                oscillator.start(audioContext.currentTime);
-                oscillator.stop(audioContext.currentTime + 0.5);
-            } catch(e) {
-                console.log('Web Audio failed:', e);
-            }
-            
-            // Show celebration emoji
-            celebrationEmoji.style.display = 'block';
-            
-            // Show overlay
-            overlay.classList.add('active');
-            
-            // Create LOTS more confetti to fill the page
-            const colors = ['#FFD93D', '#6BCF7D', '#FF6B6B', '#2B2D42', '#FFBF00', '#FF1493', '#00CED1', '#FFD700', '#FF69B4', '#FFA500', '#9370DB'];
-            
-            for (let i = 0; i < 300; i++) {
-                setTimeout(() => {
-                    const confetti = document.createElement('div');
-                    confetti.className = 'confetti';
-                    confetti.style.left = Math.random() * 100 + '%';
-                    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
-                    confetti.style.width = (Math.random() * 15 + 5) + 'px';
-                    confetti.style.height = confetti.style.width;
-                    confetti.style.animationDelay = Math.random() * 0.5 + 's';
-                    confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
-                    overlay.appendChild(confetti);
-                    
-                    setTimeout(() => confetti.remove(), 5000);
-                }, i * 10);
-            }
-            
-            // Add some larger emoji confetti
-            const emojis = ['🎉', '🎊', '🎈', '🌟', '✨', '🎁', '🐾', '🐕', '❤️'];
-            for (let i = 0; i < 50; i++) {
-                setTimeout(() => {
-                    const emojiConfetti = document.createElement('div');
-                    emojiConfetti.style.position = 'absolute';
-                    emojiConfetti.style.left = Math.random() * 100 + '%';
-                    emojiConfetti.style.fontSize = (Math.random() * 30 + 20) + 'px';
-                    emojiConfetti.style.animation = `confetti-fall ${Math.random() * 3 + 2}s linear forwards`;
-                    emojiConfetti.style.animationDelay = Math.random() * 0.5 + 's';
-                    emojiConfetti.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
-                    overlay.appendChild(emojiConfetti);
-                    
-                    setTimeout(() => emojiConfetti.remove(), 5000);
-                }, i * 30);
-            }
-            
-            // Hide celebration emoji after animation
-            setTimeout(() => {
-                celebrationEmoji.style.display = 'none';
-            }, 1500);
-            
-            // Hide overlay after animation
-            setTimeout(() => {
-                overlay.classList.remove('active');
-                overlay.innerHTML = '';
-            }, 5000);
-        }
-
-        // Form handling for Pet Owners with Google Forms integration
-        document.getElementById('ownerForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            const email = document.getElementById('ownerEmail').value;
-            const btn = this.querySelector('.submit-btn');
-            const successMsg = document.getElementById('ownerSuccess');
-            
-            btn.textContent = 'Submitting...';
-            btn.disabled = true;
-            
-            try {
-                // Submit to Google Forms
-                const formData = new FormData();
-                formData.append(EMAIL_ENTRY_ID, email);
-                
-                // Using fetch with no-cors mode (Google Forms will process but won't return response)
-                fetch(GOOGLE_FORM_URL, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    body: formData
-                });
-                
-                // Also store locally as backup
-                const userData = {
-                    email: email,
-                    role: 'pet_owner',
-                    timestamp: new Date().toISOString()
-                };
-                
-                let users = JSON.parse(localStorage.getItem('fetchyUsers') || '[]');
-                users.push(userData);
-                localStorage.setItem('fetchyUsers', JSON.stringify(users));
-                
-                // Trigger party popper animation
-                triggerPartyPopper();
-                
-                // Show success message
-                successMsg.classList.add('show');
-                this.querySelector('.email-input').value = '';
-                
-                console.log('Pet Owner registered:', userData);
-                
-                setTimeout(() => {
-                    btn.textContent = 'Join as Pet Parent';
-                    btn.disabled = false;
-                    successMsg.classList.remove('show');
-                }, 3000);
-                
-            } catch (error) {
-                console.error('Error:', error);
-                
-                // Still save locally even if Google Forms fails
-                const userData = {
-                    email: email,
-                    role: 'pet_owner',
-                    timestamp: new Date().toISOString()
-                };
-                
-                let users = JSON.parse(localStorage.getItem('fetchyUsers') || '[]');
-                users.push(userData);
-                localStorage.setItem('fetchyUsers', JSON.stringify(users));
-                
-                // Still show success to user
-                triggerPartyPopper();
-                successMsg.classList.add('show');
-                this.querySelector('.email-input').value = '';
-                
-                setTimeout(() => {
-                    btn.textContent = 'Join as Pet Parent';
-                    btn.disabled = false;
-                    successMsg.classList.remove('show');
-                }, 3000);
-            }
-        });
-
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Observe service cards and why items
-        document.querySelectorAll('.service-card, .why-item').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'all 0.6s ease';
-            observer.observe(el);
-        });
-    </script>
+    <script src="script.js"> </script>
 </body>
 </html>
